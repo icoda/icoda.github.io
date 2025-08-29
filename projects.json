@@ -6,14 +6,13 @@
     "source_url": "https://github.com/icoda/aic-van-gogh-site",
     "tags": ["api", "iiif", "gallery"],
     "thumb_url": ""
-  }
+  },
   {
     "title": "Street Photography Study",
     "description": "Personal study catalog aggregating works by Arbus, Winogrand, Levitt via The Met/AIC APIs, rendered as dynamic galleries.",
-    "live_url": "https://icoda.github.io/street-study/",        // update when you publish
-    "source_url": "https://github.com/icoda/street-study",       // update when repo exists
+    "live_url": "",
+    "source_url": "",
     "tags": ["api", "photography", "met", "aic"],
-    "thumb_url": ""                                              // see 10.C
+    "thumb_url": ""
   }
-
 ]
