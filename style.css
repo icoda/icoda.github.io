@@ -1,7 +1,7 @@
 /* ====== Theme ====== */
 :root{
   --bg: #0f172a;            /* deep navy */
-  --panel: #111827;         /* slightly darker shell for header */
+  --surface: #111827;       /* header/footer surface */
   --card: #1e293b;          /* slate panel */
   --ink: #f1f5f9;           /* near-white text */
   --muted: #94a3b8;         /* muted gray-blue */
@@ -10,11 +10,15 @@
   --border: #273244;        /* subtle borders */
   --shadow: 0 10px 30px rgba(0,0,0,.25);
   --radius: 12px;
+
+  /* Header height used for anchor offset */
+  --header-h: 72px;
 }
 
 /* ====== Base ====== */
 * { box-sizing: border-box; }
 html, body { height: 100%; }
+html { scroll-behavior: smooth; } /* optional */
 body{
   margin: 0;
   background: var(--bg);
@@ -25,19 +29,27 @@ body{
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Global container for consistent width & side padding */
+.container{
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
 /* ====== Header / Nav ====== */
 header{
+  position: sticky;     /* stays at top; does not overlap flow */
+  top: 0;
+  z-index: 1000;
+  background: var(--surface);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+header .container{
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 12px;
-  padding: 1.1rem 2rem;
-  background: linear-gradient(90deg, var(--panel), #14213a);
-  border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  backdrop-filter: saturate(140%) blur(6px);
+  padding: 1rem 1.5rem; /* matches section rhythm */
 }
 header h1{
   margin: 0;
@@ -52,10 +64,7 @@ nav a{
   margin-left: 1.1rem;
   position: relative;
 }
-nav a:hover,
-nav a:focus{
-  color: var(--accent);
-}
+nav a:hover, nav a:focus{ color: var(--accent); }
 nav a:focus-visible{
   outline: 2px solid var(--accent);
   outline-offset: 2px;
@@ -63,16 +72,12 @@ nav a:focus-visible{
 }
 
 /* ====== Layout ====== */
-main {
-  padding: 0 1.5rem; /* space left/right */
+main{ padding: 0; }
+section{
+  margin: 2.5rem 0;                     /* vertical spacing between sections */
+  scroll-margin-top: calc(var(--header-h) + 12px); /* prevent overlap on #hash */
 }
-
-section {
-  max-width: 1000px;
-  margin: 2.5rem auto; /* center with top/bottom spacing */
-  padding: 1rem;       /* inner breathing room */
-}
-h2 {
+h2{
   margin: 0 0 1rem;
   font-size: clamp(1.1rem, 2.1vw, 1.4rem);
   color: var(--accent);
@@ -153,13 +158,14 @@ h2 {
 
 /* ====== Footer ====== */
 footer{
-  max-width: 1000px;
-  margin: 3rem auto 1rem;
-  padding: 1rem;
-  border-top: 1px solid var(--border);
-  text-align: center;
+  background: var(--surface);
   color: var(--muted);
-  font-size: .9rem;
+  font-size: 0.9rem;
+}
+footer .container{
+  padding: 2rem 1.5rem;
+  text-align: center;
+  border-top: 1px solid var(--border);
 }
 
 /* ====== Utilities & A11y ====== */
