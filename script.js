@@ -1,22 +1,33 @@
 // script.js
 
 // -----------------------------
+// Utilities
+// -----------------------------
+function escapeHTML(s) {
+  return String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+// -----------------------------
 // Projects grid loader
 // -----------------------------
 async function loadProjects() {
   const grid = document.getElementById("projectsGrid");
   if (!grid) return;
 
+  grid.setAttribute("aria-busy", "true");
+
   try {
-    // 1) Fetch as TEXT so we can always log what we received
     const res = await fetch("projects.json", { cache: "no-store" });
     if (!res.ok) throw new Error(`HTTP ${res.status} fetching projects.json`);
-    const raw = await res.text();
 
-    // 2) Log raw text for debugging
+    const raw = await res.text();
     console.log("Raw projects.json →\n", raw);
 
-    // 3) Parse JSON safely
     let projects;
     try {
       projects = JSON.parse(raw);
@@ -27,31 +38,43 @@ async function loadProjects() {
       return;
     }
 
-    // 4) Basic validation
     if (!Array.isArray(projects)) {
       grid.innerHTML =
         `<p class="muted">Projects data is not an array. Check <code>projects.json</code>.</p>`;
       return;
     }
 
-    // 5) Render
+    if (projects.length === 0) {
+      grid.innerHTML = `<p class="muted">No projects yet. Check back soon.</p>`;
+      return;
+    }
+
+    // Optionally: sort newest-first if you have a "date" field
+    // projects.sort((a,b) => (b.date || "").localeCompare(a.date || ""));
+
     grid.innerHTML = projects.map(p => {
-      const title = p.title || "Untitled";
-      const desc = p.description || "";
-      const tags = Array.isArray(p.tags) ? p.tags.join(" · ") : "";
-      const thumb = p.thumb_url
+      const title = escapeHTML(p.title || "Untitled");
+      const desc = p.description ? escapeHTML(p.description) : "";
+      const tags = Array.isArray(p.tags) ? p.tags.map(escapeHTML).join(" · ") : "";
+      const thumbURL = p.thumb_url ? String(p.thumb_url) : "";
+
+      const thumb = thumbURL
         ? `
           <div class="thumb" style="margin:-6px -6px 10px -6px;border-radius:10px;overflow:hidden;background:#0d1528">
-            <img src="${p.thumb_url}" alt="${title} thumbnail" loading="lazy" style="width:100%;height:auto;display:block">
+            <img src="${thumbURL}"
+                 alt="${title} thumbnail"
+                 loading="lazy"
+                 style="width:100%;height:auto;display:block"
+                 onerror="this.style.display='none'">
           </div>`
         : ``;
 
       const liveBtn = p.live_url
-        ? `<a class="btn" href="${p.live_url}" target="_blank" rel="noopener noreferrer">View Live</a>`
+        ? `<a class="btn" href="${escapeHTML(p.live_url)}" target="_blank" rel="noopener noreferrer">View Live</a>`
         : ``;
 
       const srcBtn = p.source_url
-        ? `<a class="btn" href="${p.source_url}" target="_blank" rel="noopener noreferrer">Source</a>`
+        ? `<a class="btn" href="${escapeHTML(p.source_url)}" target="_blank" rel="noopener noreferrer">Source</a>`
         : ``;
 
       return `
@@ -68,11 +91,10 @@ async function loadProjects() {
 
   } catch (err) {
     console.error("Projects loader error:", err);
-    const grid = document.getElementById("projectsGrid");
-    if (grid) {
-      grid.innerHTML =
-        `<p class="muted">Could not load projects at this time. (${String(err)})</p>`;
-    }
+    grid.innerHTML =
+      `<p class="muted">Could not load projects at this time. (${escapeHTML(String(err))})</p>`;
+  } finally {
+    grid.removeAttribute("aria-busy");
   }
 }
 
@@ -86,9 +108,11 @@ function wireContactForm() {
   const status = document.getElementById("formStatus");
   const submitBtn = form.querySelector('button[type="submit"]');
   const honeypot = form.querySelector('input[name="website"]');
+  let inFlight = false;
 
   async function handleSubmit(e) {
     e.preventDefault();
+    if (inFlight) return;
 
     // Basic bot check (honeypot)
     if (honeypot && honeypot.value.trim() !== "") {
@@ -99,12 +123,9 @@ function wireContactForm() {
     // Native validation
     if (!form.reportValidity()) return;
 
-    // UX feedback
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.textContent = "Sending…";
-    }
-    if (status) status.textContent = "";
+    inFlight = true;
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = "Sending…"; }
+    if (status) { status.textContent = ""; status.setAttribute("aria-busy", "true"); }
 
     try {
       const controller = new AbortController();
@@ -127,10 +148,9 @@ function wireContactForm() {
       console.error("Contact form error:", err);
       if (status) status.textContent = "Network error. Please try again.";
     } finally {
-      if (submitBtn) {
-        submitBtn.disabled = false;
-        submitBtn.textContent = "Send";
-      }
+      inFlight = false;
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = "Send"; }
+      if (status) status.removeAttribute("aria-busy");
     }
   }
 

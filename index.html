@@ -3,25 +3,22 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Igoricoada — Python/Django Developer</title>
+    <title>Igori Coada — Python/Django Developer</title>
 
     <!-- Theme + SEO -->
     <meta name="theme-color" content="#0f172a" />
     <meta
       name="description"
-      content="Portfolio of Igor Icoada (aka icoda), Python/Django developer specializing in API-driven projects and modern web apps."
+      content="Portfolio of Igori Coada (aka icoda), Python/Django developer specializing in API-driven projects and modern web apps."
     />
     <link rel="canonical" href="https://igoricoada.com/" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta
-      property="og:title"
-      content="Igor Icoada (icoda) — Python/Django Developer"
-    />
+    <meta property="og:title" content="Igori Coada (icoda) — Python/Django Developer" />
     <meta
       property="og:description"
-      content="Portfolio of Igor Icoada (aka icoda), Python/Django developer specializing in API-driven projects and modern web apps."
+      content="Portfolio of Igori Coada (aka icoda), Python/Django developer specializing in API-driven projects and modern web apps."
     />
     <meta property="og:url" content="https://igoricoada.com/" />
     <meta property="og:image" content="https://igoricoada.com/og-image.png" />
@@ -85,8 +82,8 @@
       </section>
 
       <!-- Contact Section -->
-      <section id="contact">
-        <h2>Contact</h2>
+      <section id="contact" aria-labelledby="contact-title">
+        <h2 id="contact-title">Contact</h2>
         <div class="card">
           <form
             id="contactForm"
@@ -94,63 +91,19 @@
             method="POST"
             novalidate
           >
-            <div class="row">
-              <label for="name">Name</label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                autocomplete="name"
-                required
-              />
-            </div>
+            <label for="email">Your email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required />
 
-            <div class="row">
-              <label for="email">Email</label>
-              <input
-                id="email"
-                name="_replyto"
-                type="email"
-                autocomplete="email"
-                required
-              />
-            </div>
+            <label for="message">Your message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
 
-            <div class="row">
-              <label for="message">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                rows="5"
-                required
-              ></textarea>
-            </div>
+            <!-- Honeypot (anti-spam, hidden from humans) -->
+            <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off" />
 
-            <!-- Honeypot (blocks bots) -->
-            <div class="hp" aria-hidden="true">
-              <label for="website">Website</label>
-              <input
-                id="website"
-                name="website"
-                type="text"
-                tabindex="-1"
-                autocomplete="off"
-              />
-            </div>
-
-            <p
-              id="formStatus"
-              class="muted"
-              role="status"
-              aria-live="polite"
-            ></p>
             <button class="btn" type="submit">Send</button>
+            <p id="formStatus" class="muted" aria-live="polite"></p>
           </form>
-          <noscript
-            ><p class="muted">
-              JavaScript is required to submit this form.
-            </p></noscript
-          >
+          <noscript><p class="muted">JavaScript is required to submit this form.</p></noscript>
         </div>
       </section>
     </main>
@@ -159,18 +112,12 @@
     <footer>
       <div class="container">
         <p>© <span id="y"></span> Igori Coada</p>
-        <nav class="footer-links">
+        <nav class="footer-links" aria-label="Footer">
           <a href="/humans.txt">Humans.txt</a>
-          <a href="https://github.com/icoda" target="_blank" rel="noopener"
-            >GitHub</a
-          >
+          <a href="https://github.com/icoda" target="_blank" rel="noopener">GitHub</a>
         </nav>
       </div>
     </footer>
-
-    <script>
-      document.getElementById("y").textContent = new Date().getFullYear();
-    </script>
 
     <script>
       document.getElementById("y").textContent = new Date().getFullYear();
