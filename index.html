@@ -3,24 +3,90 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Icoda Portfolio</title>
+  <title>icoda — Portfolio</title>
+  <meta name="description" content="Python/Django developer portfolio showcasing API-driven projects and clean, modern web apps." />
   <style>
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      margin: 40px;
-      line-height: 1.6;
-    }
-    h1 {
-      color: #222;
-    }
-    .note {
-      color: #555;
-    }
+    :root{--bg:#0b1220;--ink:#e6edf3;--muted:#9da7b3;--card:#121a2b;--accent:#5aa2ff}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
+    .wrap{max-width:1080px;margin:0 auto;padding:28px}
+    header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+    .brand{font-weight:700;font-size:clamp(1.2rem,2.6vw,1.6rem)}
+    nav a{color:var(--accent);text-decoration:none;margin-left:14px}
+    nav a:hover{text-decoration:underline}
+    section{margin-top:24px}
+    h2{margin:.2rem 0 .6rem;font-size:clamp(1.1rem,2.2vw,1.4rem)}
+    p.muted{color:var(--muted);margin:.3rem 0 .6rem}
+    .card{background:var(--card);border-radius:14px;padding:16px;box-shadow:0 10px 28px rgba(0,0,0,.35)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+    .proj h3{margin:.2rem 0}
+    .proj p{color:var(--muted);margin:.2rem 0 .6rem}
+    .btn{display:inline-block;padding:.45rem .75rem;border:1px solid #2b3a55;border-radius:10px;color:var(--ink);text-decoration:none}
+    .btn:hover{border-color:#3b527a}
+    footer{margin:28px 0 8px;color:var(--muted);font-size:.9rem;text-align:center}
+    .spacer{height:8px}
   </style>
 </head>
 <body>
-  <h1>Welcome to My Portfolio</h1>
-  <p class="note">This is a GitHub Pages site at <code>https://icoda.github.io</code>.</p>
-  <p>More projects coming soon...</p>
+  <div class="wrap">
+    <header>
+      <div class="brand">icoda — Python/Django Developer</div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section id="about">
+      <h2>About</h2>
+      <div class="card">
+        <p class="muted">
+          I build clean, data-driven web apps with Django and modern front-end patterns.
+          I enjoy turning open data and APIs into polished, accessible experiences.
+        </p>
+        <p>
+          Core skills: Django, REST APIs, PostgreSQL, GitHub Actions, HTML/CSS, modern JS.
+          Comfortable with IIIF/collection APIs, CSV-driven content, and static hosting on GitHub Pages.
+        </p>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="grid">
+        <article class="card proj">
+          <h3>Van Gogh Catalog (AIC)</h3>
+          <p>Gallery powered by the Art Institute of Chicago API (IIIF), responsive grid and lightbox, attribution footer.</p>
+          <div class="spacer"></div>
+          <a class="btn" href="https://icoda.github.io/aic-van-gogh-site/" target="_blank" rel="noopener">View Live</a>
+          <a class="btn" href="https://github.com/icoda/aic-van-gogh-site" target="_blank" rel="noopener">Source</a>
+        </article>
+
+        <!-- Add new project cards as you publish more work -->
+        <!--
+        <article class="card proj">
+          <h3>Street Photography Study</h3>
+          <p>Personal study catalog that aggregates works by Arbus, Winogrand, Levitt via The Met/AIC APIs.</p>
+          <div class="spacer"></div>
+          <a class="btn" href="#" target="_blank" rel="noopener">View Live</a>
+          <a class="btn" href="#" target="_blank" rel="noopener">Source</a>
+        </article>
+        -->
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="card">
+        <p>Email: <a href="mailto:you@example.com">you@example.com</a></p>
+        <p>GitHub: <a href="https://github.com/icoda" target="_blank" rel="noopener">github.com/icoda</a></p>
+        <!-- Optional: LinkedIn, Twitter, etc. -->
+      </div>
+    </section>
+
+    <footer>© <span id="y"></span> icoda. Hosted on GitHub Pages.</footer>
+  </div>
+  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
 </body>
 </html>
