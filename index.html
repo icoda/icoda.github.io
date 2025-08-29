@@ -1,71 +1,110 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>icoda — Portfolio</title>
-  <meta name="description" content="Python/Django developer portfolio showcasing API-driven projects and clean, modern web apps." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <!-- Header -->
-  <header>
-    <div class="container">
-      <h1>icoda — Python/Django Developer</h1>
-      <nav aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>icoda — Portfolio</title>
 
-  <!-- Main -->
-  <main class="container">
-    <!-- About Section -->
-    <section id="about" aria-labelledby="about-title">
-      <h2 id="about-title">About</h2>
-      <div class="card">
-        <p class="muted">
-          I build clean, data-driven web apps with Django and modern front-end patterns.
-          I enjoy turning open data and APIs into polished, accessible experiences.
-        </p>
-        <p>
-          Core skills: Django, REST APIs, PostgreSQL, GitHub Actions, HTML/CSS, modern JS.
-          Comfortable with IIIF/collection APIs, CSV/JSON-driven content, and static hosting on GitHub Pages.
-        </p>
+    <!-- Theme + SEO -->
+    <meta name="theme-color" content="#0f172a" />
+    <meta
+      name="description"
+      content="Python/Django developer portfolio showcasing API-driven projects and clean, modern web apps."
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="icoda — Python/Django Developer" />
+    <meta
+      property="og:description"
+      content="API-driven projects, Django, and modern web apps."
+    />
+    <meta property="og:url" content="https://icoda.github.io/" />
+    <meta property="og:image" content="https://icoda.github.io/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://icoda.github.io/og-image.png" />
+
+    <!-- Icons -->
+    <link rel="icon" href="/favicon.png" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Fonts + CSS -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <h1>icoda — Python/Django Developer</h1>
+        <nav aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
       </div>
-    </section>
+    </header>
 
-    <!-- Projects Section -->
-    <section id="projects" aria-labelledby="projects-title">
-      <h2 id="projects-title">Projects</h2>
-      <div id="projectsGrid" aria-live="polite">
-        <!-- JS will inject project cards here from projects.json -->
+    <!-- Main -->
+    <main class="container">
+      <!-- About Section -->
+      <section id="about" aria-labelledby="about-title">
+        <h2 id="about-title">About</h2>
+        <div class="card">
+          <p class="muted">
+            I build clean, data-driven web apps with Django and modern front-end
+            patterns. I enjoy turning open data and APIs into polished,
+            accessible experiences.
+          </p>
+          <p>
+            Core skills: Django, REST APIs, PostgreSQL, GitHub Actions,
+            HTML/CSS, modern JS. Comfortable with IIIF/collection APIs,
+            CSV/JSON-driven content, and static hosting on GitHub Pages.
+          </p>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects" aria-labelledby="projects-title">
+        <h2 id="projects-title">Projects</h2>
+        <div id="projectsGrid" aria-live="polite">
+          <!-- JS will inject project cards here from projects.json -->
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" aria-labelledby="contact-title">
+        <h2 id="contact-title">Contact</h2>
+        <div class="card">
+          <p>Email: <a href="mailto:you@example.com">you@example.com</a></p>
+          <p>
+            GitHub:
+            <a href="https://github.com/icoda" target="_blank" rel="noopener"
+              >github.com/icoda</a
+            >
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        © <span id="y"></span> icoda · Hosted on GitHub Pages
       </div>
-    </section>
+    </footer>
 
-    <!-- Contact Section -->
-    <section id="contact" aria-labelledby="contact-title">
-      <h2 id="contact-title">Contact</h2>
-      <div class="card">
-        <p>Email: <a href="mailto:you@example.com">you@example.com</a></p>
-        <p>GitHub: <a href="https://github.com/icoda" target="_blank" rel="noopener">github.com/icoda</a></p>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      © <span id="y"></span> icoda · Hosted on GitHub Pages
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
-  <script src="script.js" defer></script>
-</body>
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+    <script src="script.js" defer></script>
+  </body>
 </html>
