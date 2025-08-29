@@ -11,7 +11,7 @@
   --shadow: 0 10px 30px rgba(0,0,0,.25);
   --radius: 12px;
 
-  /* Header height used for anchor offset */
+  /* Header height used for anchor offset (approx.) */
   --header-h: 72px;
 }
 
@@ -57,15 +57,16 @@ header h1{
   color: var(--accent);
   letter-spacing: .2px;
 }
-nav a{
-  color: var(--ink);
+header nav a{
+  color: var(--ink);             /* keep nav links light */
   text-decoration: none;
   font-weight: 500;
   margin-left: 1.1rem;
   position: relative;
 }
-nav a:hover, nav a:focus{ color: var(--accent); }
-nav a:focus-visible{
+header nav a:hover,
+header nav a:focus{ color: var(--accent); }
+header nav a:focus-visible{
   outline: 2px solid var(--accent);
   outline-offset: 2px;
   border-radius: 6px;
@@ -80,7 +81,23 @@ section{
 h2{
   margin: 0 0 1rem;
   font-size: clamp(1.1rem, 2.1vw, 1.4rem);
-  color: var(--accent);
+  color: var(--accent);                 /* accent cyan */
+}
+
+/* ====== Content Links (NOT nav) ====== */
+main a{
+  color: var(--accent);                 /* match section headers */
+  text-decoration: none;
+  outline-offset: 2px;
+  transition: color .18s ease;
+}
+main a:hover,
+main a:focus{
+  color: var(--accent-600);             /* darker cyan on hover/focus */
+}
+main a:focus-visible{
+  outline: 2px solid var(--accent);
+  border-radius: 6px;
 }
 
 /* ====== Cards ====== */
@@ -168,14 +185,8 @@ footer .container{
   border-top: 1px solid var(--border);
 }
 
-/* ====== Utilities & A11y ====== */
+/* ====== A11y / Reduced Motion ====== */
 a { outline-offset: 2px; }
-a:focus-visible{
-  outline: 2px solid var(--accent);
-  border-radius: 6px;
-}
-
-/* Respect reduced-motion preferences */
 @media (prefers-reduced-motion: reduce){
   * { transition: none !important; animation: none !important; }
 }
