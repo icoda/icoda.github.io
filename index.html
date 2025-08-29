@@ -9,19 +9,23 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Header -->
   <header>
-    <h1>icoda — Python/Django Developer</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="container">
+      <h1>icoda — Python/Django Developer</h1>
+      <nav aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
+  <!-- Main -->
+  <main class="container">
     <!-- About Section -->
-    <section id="about">
-      <h2>About</h2>
+    <section id="about" aria-labelledby="about-title">
+      <h2 id="about-title">About</h2>
       <div class="card">
         <p class="muted">
           I build clean, data-driven web apps with Django and modern front-end patterns.
@@ -35,16 +39,16 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects">
-      <h2>Projects</h2>
+    <section id="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title">Projects</h2>
       <div id="projectsGrid" aria-live="polite">
         <!-- JS will inject project cards here from projects.json -->
       </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact">
-      <h2>Contact</h2>
+    <section id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
       <div class="card">
         <p>Email: <a href="mailto:you@example.com">you@example.com</a></p>
         <p>GitHub: <a href="https://github.com/icoda" target="_blank" rel="noopener">github.com/icoda</a></p>
@@ -52,8 +56,11 @@
     </section>
   </main>
 
+  <!-- Footer -->
   <footer>
-    © <span id="y"></span> icoda · Hosted on GitHub Pages
+    <div class="container">
+      © <span id="y"></span> icoda · Hosted on GitHub Pages
+    </div>
   </footer>
 
   <script>
