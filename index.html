@@ -85,16 +85,72 @@
       </section>
 
       <!-- Contact Section -->
-      <section id="contact" aria-labelledby="contact-title">
-        <h2 id="contact-title">Contact</h2>
+      <section id="contact">
+        <h2>Contact</h2>
         <div class="card">
-          <p>Email: <a href="mailto:you@example.com">you@example.com</a></p>
-          <p>
-            GitHub:
-            <a href="https://github.com/icoda" target="_blank" rel="noopener"
-              >github.com/icoda</a
-            >
-          </p>
+          <form
+            id="contactForm"
+            action="https://formspree.io/f/xandqpgg"
+            method="POST"
+            novalidate
+          >
+            <div class="row">
+              <label for="name">Name</label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                autocomplete="name"
+                required
+              />
+            </div>
+
+            <div class="row">
+              <label for="email">Email</label>
+              <input
+                id="email"
+                name="_replyto"
+                type="email"
+                autocomplete="email"
+                required
+              />
+            </div>
+
+            <div class="row">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+
+            <!-- Honeypot (blocks bots) -->
+            <div class="hp" aria-hidden="true">
+              <label for="website">Website</label>
+              <input
+                id="website"
+                name="website"
+                type="text"
+                tabindex="-1"
+                autocomplete="off"
+              />
+            </div>
+
+            <p
+              id="formStatus"
+              class="muted"
+              role="status"
+              aria-live="polite"
+            ></p>
+            <button class="btn" type="submit">Send</button>
+          </form>
+          <noscript
+            ><p class="muted">
+              JavaScript is required to submit this form.
+            </p></noscript
+          >
         </div>
       </section>
     </main>
@@ -102,9 +158,19 @@
     <!-- Footer -->
     <footer>
       <div class="container">
-        © <span id="y"></span> Igori Coada · aka icoda · Hosted on GitHub Pages
+        <p>© <span id="y"></span> Igori Coada</p>
+        <nav class="footer-links">
+          <a href="/humans.txt">Humans.txt</a>
+          <a href="https://github.com/icoda" target="_blank" rel="noopener"
+            >GitHub</a
+          >
+        </nav>
       </div>
     </footer>
+
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
 
     <script>
       document.getElementById("y").textContent = new Date().getFullYear();

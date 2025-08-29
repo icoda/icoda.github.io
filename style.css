@@ -1,14 +1,14 @@
 /* ====== Theme ====== */
-:root{
-  --bg: #0f172a;            /* deep navy */
-  --surface: #111827;       /* header/footer surface */
-  --card: #1e293b;          /* slate panel */
-  --ink: #f1f5f9;           /* near-white text */
-  --muted: #94a3b8;         /* muted gray-blue */
-  --accent: #38bdf8;        /* cyan (primary) */
-  --accent-600: #0ea5e9;    /* hover cyan */
-  --border: #273244;        /* subtle borders */
-  --shadow: 0 10px 30px rgba(0,0,0,.25);
+:root {
+  --bg: #0f172a; /* deep navy */
+  --surface: #111827; /* header/footer surface */
+  --card: #1e293b; /* slate panel */
+  --ink: #f1f5f9; /* near-white text */
+  --muted: #94a3b8; /* muted gray-blue */
+  --accent: #38bdf8; /* cyan (primary) */
+  --accent-600: #0ea5e9; /* hover cyan */
+  --border: #273244; /* subtle borders */
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
   --radius: 12px;
 
   /* Header height used for anchor offset (approx.) */
@@ -16,92 +16,106 @@
 }
 
 /* ====== Base ====== */
-* { box-sizing: border-box; }
-html, body { height: 100%; }
-html { scroll-behavior: smooth; } /* optional */
-body{
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+html {
+  scroll-behavior: smooth;
+} /* optional */
+body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
+    Arial, sans-serif;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 /* Global container for consistent width & side padding */
-.container{
+.container {
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 
 /* ====== Header / Nav ====== */
-header{
-  position: sticky;     /* stays at top; does not overlap flow */
+header {
+  position: sticky; /* stays at top; does not overlap flow */
   top: 0;
   z-index: 1000;
   background: var(--surface);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 }
-header .container{
+header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 12px;
   padding: 1rem 1.5rem; /* matches section rhythm */
 }
-header h1{
+header h1 {
   margin: 0;
   font-size: clamp(1.2rem, 2.5vw, 1.6rem);
   color: var(--accent);
-  letter-spacing: .2px;
+  letter-spacing: 0.2px;
 }
-header nav a{
-  color: var(--ink);             /* keep nav links light */
+header nav a {
+  color: var(--ink); /* keep nav links light */
   text-decoration: none;
   font-weight: 500;
   margin-left: 1.1rem;
   position: relative;
 }
 header nav a:hover,
-header nav a:focus{ color: var(--accent); }
-header nav a:focus-visible{
+header nav a:focus {
+  color: var(--accent);
+}
+header nav a:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
   border-radius: 6px;
 }
 
 /* ====== Layout ====== */
-main{ padding: 0; }
-section{
-  margin: 2.5rem 0;                     /* vertical spacing between sections */
-  scroll-margin-top: calc(var(--header-h) + 12px); /* prevent overlap on #hash */
+main {
+  padding: 0;
 }
-h2{
+section {
+  margin: 2.5rem 0; /* vertical spacing between sections */
+  scroll-margin-top: calc(
+    var(--header-h) + 12px
+  ); /* prevent overlap on #hash */
+}
+h2 {
   margin: 0 0 1rem;
   font-size: clamp(1.1rem, 2.1vw, 1.4rem);
-  color: var(--accent);                 /* accent cyan */
+  color: var(--accent); /* accent cyan */
 }
 
 /* ====== Content Links (NOT nav) ====== */
-main a{
-  color: var(--accent);                 /* match section headers */
+main a {
+  color: var(--accent); /* match section headers */
   text-decoration: none;
   outline-offset: 2px;
-  transition: color .18s ease;
+  transition: color 0.18s ease;
 }
 main a:hover,
-main a:focus{
-  color: var(--accent-600);             /* darker cyan on hover/focus */
+main a:focus {
+  color: var(--accent-600); /* darker cyan on hover/focus */
 }
-main a:focus-visible{
+main a:focus-visible {
   outline: 2px solid var(--accent);
   border-radius: 6px;
 }
 
 /* ====== Cards ====== */
-.card{
+.card {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -110,29 +124,35 @@ main a:focus-visible{
 }
 
 /* ====== Projects Grid ====== */
-#projectsGrid{
+#projectsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
   gap: 1.2rem;
 }
-.card.proj{
-  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+.card.proj {
+  transition: transform 0.18s ease, box-shadow 0.18s ease,
+    border-color 0.18s ease;
 }
-.card.proj:hover{
+.card.proj:hover {
   transform: translateY(-4px);
-  box-shadow: 0 14px 38px rgba(0,0,0,.32);
-  border-color: rgba(56,189,248,.35);
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.32);
+  border-color: rgba(56, 189, 248, 0.35);
 }
-.card.proj h3{
-  margin: .1rem 0 .4rem;
+.card.proj h3 {
+  margin: 0.1rem 0 0.4rem;
   font-size: 1.08rem;
   color: var(--ink);
 }
-.card.proj p{ margin: .35rem 0; }
-.muted{ color: var(--muted); font-size: .92rem; }
+.card.proj p {
+  margin: 0.35rem 0;
+}
+.muted {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
 
 /* Optional thumbnail container inside project cards */
-.proj .thumb{
+.proj .thumb {
   margin: -6px -6px 10px -6px;
   border-radius: 10px;
   overflow: hidden;
@@ -140,53 +160,98 @@ main a:focus-visible{
 }
 
 /* ====== Buttons ====== */
-.btn{
+.btn {
   display: inline-block;
-  padding: .48rem .9rem;
+  padding: 0.48rem 0.9rem;
   border-radius: 8px;
   text-decoration: none;
   font-weight: 600;
-  font-size: .92rem;
+  font-size: 0.92rem;
   line-height: 1;
-  margin-right: .5rem;
+  margin-right: 0.5rem;
   border: 1px solid transparent;
-  transition: background .18s ease, border-color .18s ease, color .18s ease, transform .02s ease;
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease,
+    transform 0.02s ease;
   user-select: none;
 }
-.btn:active{ transform: translateY(1px); }
+.btn:active {
+  transform: translateY(1px);
+}
 
 /* Primary and secondary styles (first/second button pattern) */
-.proj .btn:nth-of-type(1){
+.proj .btn:nth-of-type(1) {
   background: var(--accent);
   color: #0b1220;
 }
-.proj .btn:nth-of-type(1):hover{ background: var(--accent-600); color: #fff; }
+.proj .btn:nth-of-type(1):hover {
+  background: var(--accent-600);
+  color: #fff;
+}
 
-.proj .btn:nth-of-type(2){
+.proj .btn:nth-of-type(2) {
   background: #2b3446;
   color: var(--accent);
-  border-color: rgba(56,189,248,.35);
+  border-color: rgba(56, 189, 248, 0.35);
 }
-.proj .btn:nth-of-type(2):hover{
+.proj .btn:nth-of-type(2):hover {
   background: #334155;
   border-color: var(--accent-600);
   color: var(--ink);
 }
 
 /* ====== Footer ====== */
-footer{
+footer {
   background: var(--surface);
-  color: var(--muted);
-  font-size: 0.9rem;
+  color: var(--muted); /* muted gray for normal text */
+  font-size: 0.85rem; /* slightly smaller */
 }
-footer .container{
-  padding: 2rem 1.5rem;
+footer .container {
+  padding: 1.8rem 1.5rem;
   text-align: center;
   border-top: 1px solid var(--border);
 }
 
+/* Footer links */
+.footer-links {
+  margin-top: 0.5rem;
+}
+.footer-links a {
+  margin: 0 0.6rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+.footer-links a:hover,
+.footer-links a:focus {
+  color: var(--accent-600);
+  text-decoration: underline;
+}
+
 /* ====== A11y / Reduced Motion ====== */
-a { outline-offset: 2px; }
-@media (prefers-reduced-motion: reduce){
-  * { transition: none !important; animation: none !important; }
+a {
+  outline-offset: 2px;
+}
+
+/* Contact form layout */
+#contactForm .row { margin-bottom: 0.9rem; }
+#contactForm label { display:block; font-weight:600; margin-bottom:.35rem; }
+#contactForm input, #contactForm textarea {
+  width: 100%;
+  background: #0b1220;
+  color: var(--ink);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: .6rem .75rem;
+}
+#contactForm input:focus, #contactForm textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+#contactForm .hp { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+#formStatus { margin:.5rem 0 0; }
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
 }
