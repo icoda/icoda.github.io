@@ -1,111 +1,63 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>icoda — Portfolio</title>
-    <meta
-      name="description"
-      content="Python/Django developer portfolio showcasing API-driven projects and clean, modern web apps."
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="wrap">
-      <header>
-        <div class="brand">icoda — Python/Django Developer</div>
-        <nav>
-          <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </header>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>icoda — Portfolio</title>
+  <meta name="description" content="Python/Django developer portfolio showcasing API-driven projects and clean, modern web apps." />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>icoda — Python/Django Developer</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-      <section id="about">
-        <h2>About</h2>
-        <div class="card">
-          <p class="muted">
-            I build clean, data-driven web apps with Django and modern front-end
-            patterns. I enjoy turning open data and APIs into polished,
-            accessible experiences.
-          </p>
-          <p>
-            Core skills: Django, REST APIs, PostgreSQL, GitHub Actions,
-            HTML/CSS, modern JS. Comfortable with IIIF/collection APIs,
-            CSV-driven content, and static hosting on GitHub Pages.
-          </p>
-        </div>
-      </section>
-      <section id="projects">
-        <h2>Projects</h2>
-        <div id="projectsGrid" class="grid" aria-live="polite">
-          <!-- Cards will be injected by JS -->
-        </div>
-      </section>
+  <main>
+    <!-- About Section -->
+    <section id="about">
+      <h2>About</h2>
+      <div class="card">
+        <p class="muted">
+          I build clean, data-driven web apps with Django and modern front-end patterns.
+          I enjoy turning open data and APIs into polished, accessible experiences.
+        </p>
+        <p>
+          Core skills: Django, REST APIs, PostgreSQL, GitHub Actions, HTML/CSS, modern JS.
+          Comfortable with IIIF/collection APIs, CSV/JSON-driven content, and static hosting on GitHub Pages.
+        </p>
+      </div>
+    </section>
 
-      <script>
-        (async function renderProjects() {
-          try {
-            const res = await fetch("projects.json", { cache: "no-store" });
-            const projects = await res.json();
+    <!-- Projects Section -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <div id="projectsGrid" aria-live="polite">
+        <!-- JS will inject project cards here from projects.json -->
+      </div>
+    </section>
 
-            const grid = document.getElementById("projectsGrid");
-            grid.innerHTML = projects
-              .map((p) => {
-                const tags = Array.isArray(p.tags) ? p.tags.join(" · ") : "";
-                const thumb = p.thumb_url
-                  ? `
-        <div style="margin:-6px -6px 10px -6px;border-radius:10px;overflow:hidden;background:#0d1528">
-          <img src="${p.thumb_url}" alt="${p.title} thumbnail" style="width:100%;height:auto;display:block">
-        </div>`
-                  : ``;
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="card">
+        <p>Email: <a href="mailto:you@example.com">you@example.com</a></p>
+        <p>GitHub: <a href="https://github.com/icoda" target="_blank" rel="noopener">github.com/icoda</a></p>
+      </div>
+    </section>
+  </main>
 
-                return `
-        <article class="card proj">
-          ${thumb}
-          <h3>${p.title}</h3>
-          <p>${p.description || ""}</p>
-          ${tags ? `<p class="muted">${tags}</p>` : ``}
-          <div class="spacer"></div>
-          ${
-            p.live_url
-              ? `<a class="btn" href="${p.live_url}" target="_blank" rel="noopener">View Live</a>`
-              : ``
-          }
-          ${
-            p.source_url
-              ? `<a class="btn" href="${p.source_url}" target="_blank" rel="noopener">Source</a>`
-              : ``
-          }
-        </article>
-      `;
-              })
-              .join("");
-          } catch (err) {
-            console.error(err);
-            const grid = document.getElementById("projectsGrid");
-            grid.innerHTML = `<p class="muted">Could not load projects at this time.</p>`;
-          }
-        })();
-      </script>
+  <footer>
+    © <span id="y"></span> icoda · Hosted on GitHub Pages
+  </footer>
 
-      <section id="contact">
-        <h2>Contact</h2>
-        <div class="card">
-          <p>Email: <a href="mailto:you@example.com">you@example.com</a></p>
-          <p>
-            GitHub:
-            <a href="https://github.com/icoda" target="_blank" rel="noopener"
-              >github.com/icoda</a
-            >
-          </p>
-          <!-- Optional: LinkedIn, Twitter, etc. -->
-        </div>
-      </section>
-
-      <footer>© <span id="y"></span> icoda. Hosted on GitHub Pages.</footer>
-    </div>
-    <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
-    <script src="script.js" defer></script>
-  </body>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+  <script src="script.js" defer></script>
+</body>
 </html>
