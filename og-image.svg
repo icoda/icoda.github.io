@@ -1,28 +1,54 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630">
-  <rect width="1200" height="630" fill="#0f172a"/>
-  
-  <!-- Main title (real name) -->
-  <text x="50%" y="42%" text-anchor="middle"
-        font-family="Inter, sans-serif"
-        font-size="64"
-        fill="#f1f5f9"
-        font-weight="600">
-    Igori Coada
-  </text>
-  
-  <!-- Subtitle (role) -->
-  <text x="50%" y="55%" text-anchor="middle"
-        font-family="Inter, sans-serif"
-        font-size="36"
-        fill="#38bdf8">
-    Python/Django Developer
-  </text>
+  <defs>
+    <!-- Background gradient: deep navy to slate -->
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"  stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <!-- Soft vignette for depth -->
+    <radialGradient id="vignette" cx="70%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="rgba(0,0,0,0)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0.35)"/>
+    </radialGradient>
+    <!-- Subtle diagonal pattern -->
+    <pattern id="diags" width="16" height="16" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+      <rect width="16" height="16" fill="none"/>
+      <rect x="0" y="0" width="8" height="16" fill="rgba(255,255,255,0.02)"/>
+    </pattern>
+  </defs>
 
-  <!-- Alias note -->
-  <text x="50%" y="68%" text-anchor="middle"
-        font-family="Inter, sans-serif"
-        font-size="28"
-        fill="#94a3b8">
-    aka icoda
-  </text>
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#diags)"/>
+  <rect width="1200" height="630" fill="url(#vignette)"/>
+
+  <!-- Left accent bar -->
+  <rect x="0" y="0" width="12" height="630" fill="#38bdf8"/>
+
+  <!-- Top-right cyan ring (brand motif) -->
+  <circle cx="1040" cy="140" r="120" fill="none" stroke="rgba(56,189,248,0.25)" stroke-width="18"/>
+  <circle cx="1040" cy="140" r="78"  fill="none" stroke="rgba(56,189,248,0.14)" stroke-width="10"/>
+
+  <!-- Text block -->
+  <g font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">
+    <text x="60" y="260" font-size="70" font-weight="700" fill="#f1f5f9" letter-spacing="0.3px">
+      Igori Coada
+    </text>
+    <text x="60" y="330" font-size="40" font-weight="600" fill="#38bdf8">
+      Python/Django Developer
+    </text>
+    <text x="60" y="392" font-size="28" font-weight="500" fill="#94a3b8">
+      aka icoda
+    </text>
+
+    <!-- Tagline -->
+    <text x="60" y="465" font-size="28" font-weight="400" fill="#cbd5e1">
+      Building API-driven projects &amp; modern web apps
+    </text>
+
+    <!-- URL -->
+    <text x="60" y="520" font-size="26" font-weight="500" fill="#94a3b8">
+      icoda.github.io
+    </text>
+  </g>
 </svg>
