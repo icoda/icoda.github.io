@@ -63,13 +63,17 @@ nav a:focus-visible{
 }
 
 /* ====== Layout ====== */
-main{ padding: 0 1rem; }
-section{
-  max-width: 1000px;
-  margin: 2rem auto;
+main {
+  padding: 0 1.5rem; /* space left/right */
 }
-h2{
-  margin: 0 0 .8rem;
+
+section {
+  max-width: 1000px;
+  margin: 2.5rem auto; /* center with top/bottom spacing */
+  padding: 1rem;       /* inner breathing room */
+}
+h2 {
+  margin: 0 0 1rem;
   font-size: clamp(1.1rem, 2.1vw, 1.4rem);
   color: var(--accent);
 }
